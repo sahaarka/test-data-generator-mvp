@@ -24,3 +24,8 @@ pandas
 faker
 python-dateutil
 
+---
+
+## Execution
+Run the .bat file
+
