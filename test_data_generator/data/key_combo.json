@@ -1,0 +1,11 @@
+{
+     "key_combo": [
+          {
+               "primary_table_name": "Users",
+               "primary_column_name": "username",
+               "foreign_table_name": "Orders",
+               "foreign_column_name": "customer_id",
+               "Serial_No": 1
+          }
+     ]
+}

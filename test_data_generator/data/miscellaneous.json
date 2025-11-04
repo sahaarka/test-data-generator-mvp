@@ -1,0 +1,9 @@
+{
+     "does_log_exist": true,
+     "table_details_required": "Orders",
+     "metadata_file_present": "yes",
+     "metadata_file_name": "C:\\Users\\arkas\\Documents\\Coding_at_Scale\\Test_Data_Generator_App\\test-data-generator-mvp\\test_data_generator\\metadata\\Users.csv",
+     "test_data_file_present": "yes",
+     "test_data_file_name": "C:\\Users\\arkas\\Documents\\Coding_at_Scale\\Test_Data_Generator_App\\test-data-generator-mvp\\test_data_generator\\test_data\\Orders.csv",
+     "Define Relation": "yes"
+}

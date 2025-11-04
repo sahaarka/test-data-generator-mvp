@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Data Generator</title>
+    <style>
+        .container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 0px solid rgba(0, 0, 0, 0);
+            border-radius: .25rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.4rem;
+            box-shadow: 0 2px 6px 0 rgb(218 218 253 / 65%), 0 2px 6px 0 rgb(206 206 238 / 54%);
+        }
+
+        .container table {
+            width: 100%;
+            font-size: 14px;
+        }
+
+        .reset{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            padding-right: 10%;
+            padding-bottom: 0%;
+            padding-top: 20px;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            border-radius: .25rem;
+            margin-bottom: .5rem;
+        }
+
+        .btn-circle {
+            width: 30px;
+            height: 30px;
+            padding: 6px 0px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: 12px;
+            line-height: 1.42857;
+        }
+
+        .nav-link {
+            font-family: 'Roboto Slab', sans-serif;
+            font-size: 16px;
+            margin-right: 20px;
+        }
+
+        .nav-link.active {
+            background-color: #bfbf9d;
+            color: #000;
+            border-radius: 10px;
+            font-weight: 250;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-heading {
+            font-family: 'Roboto Slab', sans-serif; /* Change to your desired font family */
+            font-weight: 550;
+            font-size: 20px; /* Adjust the font size as needed */
+            color: #050a53; /* Change to your desired color */
+            margin-bottom: 20px; /* Add spacing below the heading */
+        }
+
+        /* Style for the copyright container */
+        .copyright-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #4a1068;
+        color: #fff;
+        text-align: center;
+        }
+
+        /* Style for the scrolling text */
+        .copyright-text {
+        overflow: hidden; /* Hide overflowing content */
+        white-space: nowrap; /* Prevent text wrapping */
+        font-family: Calibri, sans-serif;
+        animation: scrollText 20s linear infinite; /* Scroll animation */
+        }
+
+        /* Keyframes for the scrolling animation */
+        @keyframes scrollText {
+        0% {
+            transform: translateX(100%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+        }
+
+    </style>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url_for('usermanual') }}">User Manual</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url_for('form') }}">Metadata Upload</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="{{ url_for('download') }}">CSV Download</a>
+            </li>
+            {% if miscellaneous_dict['does_log_exist'] %}
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{{ url_for('log') }}">Check Log</a>
+            </li>
+            {%endif%}
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    {% if files %}
+    <div class="container">
+        <div class="row form">
+            <div class="col-4 form">
+                <h1 class="download-heading">Download Log Files</h1>
+                <ul class="list-group">
+                    {% for file in files %}
+                    <li class="list-group-item">
+                        <a href="{{ url_for('download_logfile', filename=file) }}" download="{{ file }}">
+                            <i class="fas fa-file-download"></i> {{ file.split('\\')[-1] }}
+                        </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-8 form">
+                <div class="row form">
+                    <div class="col-9 form">
+                        <h1 class="download-heading">Latest Log -- <i style="color: darkgreen;">{{ latest_file.split('\\')[-1] }}</i></h1>
+                    </div>
+                    <div class="col-3 form">
+                        <form action="{{ url_for("log")}}" method="post">
+                        <button type="submit" class="btn btn-danger" name = "deleteLog" value = "Delete All Logs">Delete All Logs</button>
+                        </form>
+                    </div>
+                </div>
+            <textarea rows="20" cols="84" style="overflow-y: scroll;">{{ log_content }}</textarea>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div class="copyright-container">
+        <div class="copyright-text">
+          Created by Arka Saha (anticlock909@gmail.com). &copy; 2025. All rights reserved.
+        </div>
+    </div>
+</body>
+</html>

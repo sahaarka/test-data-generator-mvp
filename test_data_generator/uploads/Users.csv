@@ -1,0 +1,28 @@
+column_name,datatype,example_value,min_value,max_value,format,constraint
+user_id,integer,123456,,,,not null
+username,string,,,,name,not null
+email,string,ahdakdnkd@gmail.com,,,,not null
+age,,30,,,,not null
+registration_date,date,,,,%d-%m-%Y,not null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

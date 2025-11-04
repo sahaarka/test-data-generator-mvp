@@ -1,0 +1,6 @@
+column_name,datatype,example_value,constraint
+order_id,string,abcd/07/10/100001,not null
+customer_id,integer,234568,not null
+product_id,integer,3567,not null
+quantity,string,25.20,not null
+order_date,timestamp,15-03-2022 10:30:12,not null

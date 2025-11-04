@@ -1,0 +1,6 @@
+column_name,datatype,example_value,constraint
+user_id,integer,123456,not null
+username,string,,not null
+email,string,ahdakdnkd@gmail.com,not null
+age,integer,30,not null
+registration_date,date,,not null

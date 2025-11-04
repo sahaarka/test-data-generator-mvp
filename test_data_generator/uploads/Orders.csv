@@ -1,0 +1,28 @@
+column_name,datatype,example_value,min_value,max_value,format,constraint
+order_id,,abcd/07/10/100001,,,,not null
+customer_id,integer,234568,,,,not null
+product_id,integer,3567,,,,not null
+quantity,string,25.20,10.50,5500.75,,not null
+order_date,,15-03-2022 10:30:12,,,,not null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

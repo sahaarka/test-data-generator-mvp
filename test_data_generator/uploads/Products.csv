@@ -1,0 +1,28 @@
+column_name,datatype,example_value,min_value,max_value,format,constraint
+product_id,,1234,,,,not null
+product_name,string(10),,,,alpha,not null
+price,decimal(6;2),,,,,not null
+category_id,,101,,,,not null
+in_stock,string,True;False,,,alpha,not null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

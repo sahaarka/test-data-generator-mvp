@@ -1,0 +1,34 @@
+{
+     "table_metadata": [
+          {
+               "table_name": "Users",
+               "list_of_columns": [
+                    "user_id",
+                    "username",
+                    "email",
+                    "age",
+                    "registration_date"
+               ]
+          },
+          {
+               "table_name": "Orders",
+               "list_of_columns": [
+                    "order_id",
+                    "customer_id",
+                    "product_id",
+                    "quantity",
+                    "order_date"
+               ]
+          },
+          {
+               "table_name": "Products",
+               "list_of_columns": [
+                    "product_id",
+                    "product_name",
+                    "price",
+                    "category_id",
+                    "in_stock"
+               ]
+          }
+     ]
+}

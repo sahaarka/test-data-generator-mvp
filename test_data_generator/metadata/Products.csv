@@ -1,0 +1,6 @@
+column_name,datatype,example_value,constraint
+product_id,integer,1234,not null
+product_name,string(10),,not null
+price,decimal(6;2),,not null
+category_id,integer,101,not null
+in_stock,string,True;False,not null
